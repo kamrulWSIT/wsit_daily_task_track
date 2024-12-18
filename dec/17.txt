@@ -1,0 +1,58 @@
+spatie role permission
+-------------------------------
+install fresh laravel project
+
+install breeze
+---------------------
+composer require laravel/breeze --dev
+php artisan breeze:install
+npm install
+npm run dev
+
+install spatie
+-----------------
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+php artisan optimize:clear
+php artisan migrate
+
+in User.php model 
+add use Spatie\Permission\Traits\HasRoles;
+use HasRoles;
+
+in app/Http/Kernel.php add 
+
+'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+in routeMiddleware
+
+create  role and user
+-------------------------------
+role-> 
+use Spatie\Permission\Models\Role;
+Role::create(['name' => 'admin']);
+        Role::create(['name' => 'writer']);
+        Role::create(['name' => 'user']);
+
+admin-> User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ])->
+
+databaseseeder-> $this->call(RoleSeeder::class);
+        $this->call(AdminSeeder::class);
+
+
+role and permission crud
+assign role
+assign permission
+
+
+resource
+-------------------
+https://spatie.be/
+https://www.youtube.com/watch?v=cNrMdCXNml8&list=PL6tf8fRbavl3xuFIe4_i3TB4PZbtbx3Js&index=16
+git link ->https://github.com/kamrulWSIT/spatie_role_permission

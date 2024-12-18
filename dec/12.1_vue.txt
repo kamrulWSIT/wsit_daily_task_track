@@ -1,0 +1,57 @@
+set up
+----------------
+setup using cdn 
+setup using npm
+
+syntex
+----------------
+data render
+v-if, v-else-if, v-else
+v-for
+v-bind
+v-on:click/@click event
+ref & reactive value
+see option api & composition api structure 
+v-model & form
+
+life cycle hooks
+------------------------------
+Initialization Phase
+------------------------------
+beforeCreate
+Called right after the instance is initialized, but before data observation and event/watcher setup.
+
+created
+Called after the instance is created and reactive data is set up, but before mounting.
+
+Mounting Phase
+-----------------------
+beforeMount
+Called before the DOM is mounted, but the template is compiled and ready.
+
+mounted
+Called after the component is mounted to the DOM.
+
+Updating Phase
+---------------------------
+beforeUpdate
+Called when reactive data is about to update, but the DOM hasn't been re-rendered yet.
+
+updated
+Called after the component's reactive data has updated and the DOM is re-rendered.
+
+Destruction Phase
+-----------------------------
+beforeDestroy
+Called before the component is destroyed.
+
+destroyed
+Called after the component has been destroyed.
+
+Additional Lifecycle Hooks
+----------------------------------
+activated
+Specific to components inside <keep-alive>. Called when the component is activated (brought into view).
+
+deactivated
+Called when a <keep-alive> component is deactivated (removed from view).

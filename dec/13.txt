@@ -1,0 +1,9 @@
+learn from monez
+------------------------
+prefix route with name
+namespace route(need to learn more)
+
+try to understand vechical get and store from monez(nedd more learn)
+jira ticketing (from Rashed Bhai)
+pdf generate in laravel dom pdf 
+https://github.com/kamrulWSIT/dom_pdf_practice

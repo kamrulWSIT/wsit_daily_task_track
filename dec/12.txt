@@ -1,0 +1,41 @@
+task -> have to see feature of monez
+--------------------------------------
+user -> kasanoadmin
+password -> 123456
+
+user (maybe super admin)
+-----------------------------------
+registration
+-----------------------------------
+account name
+contact name
+phone
+email
+website
+address
+country
+province
+city
+postal code
+user name
+password
+
+forget password using email verification
+login using registered user name and password
+-------------------------------------------------
+after login
+-------------------------------------------------
+user can update their profile with logo
+user can see their details
+
+
+-------------------------------------------------
+inventory
+-------------------------------------------------
+vehicles
+-------------
+
+
+
+
+

@@ -1,0 +1,109 @@
+git-> version control sytem for tracking code change.
+github -> where we store code in online.
+
+config
+----------------------------------------
+git config -> for show all configure option
+git config --global user.name "username"
+git config --global user.email "email"
+
+git config -l -> for show all set variables in git.
+
+basic commands
+------------------------------------------
+git init -> for create git repo
+git add filename or .(dot) -> for stage in git
+git reset -> for use git add revert (stage to unstage)
+
+git status -> use for any changes track or not
+git commit -m "any-message" -> use for changes save in local branch (for using git commit we have to add changes)
+git log -> for show all commits
+
+branch
+-------------------------------------------
+git checkout -b "branchname" -> create branch and switch to the branch (keep all files from previous branch)
+git branch -> show all branches created locally
+
+commit
+----------------------------------------------
+git commit ->for descriptive commit. first line for short message and second line for description. (for save type esc and :wq) for complex commit we can use this.
+
+alias
+-----------------------------------------------------
+git config --global alias.co "checkout"
+
+
+git remote
+--------------------------------------------------------
+git remote kind of address where save the local changes code
+git remote add origin repo link (this url means remote repo link where we want to save our locally changes code)
+
+you can add another address
+---------------------------------
+git remote add orfiaz git@github.com:mredulorfiaz/devops-careerpath.git (where orfiaz is address name it can be any-name git@github.com:mredulorfiaz/devops-careerpath.git is address link)
+
+git remote -> (show remote or origin)
+git remote -v -> (show remote or origin with link)
+git remote remove origin -> for remove added origin
+
+
+ssh-keygen
+------------------------------------------
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+if face any problrm in windows machine use this bash command -> ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh -T git@github.com -> check connection
+
+am facing problem to git push -u origin main , then i have to set ssh key (major learning point). 
+
+pull
+-------------------------------------------
+git fetch origin main -> keep code changes from remote(some one change code in main branch in github) but don't apply code locally.
+git pull origin main -> first fetch then apply
+
+fork
+---------------------------------------
+fork mainly use for contribute others repo and own use.
+first fork the other repo
+then clone the repo from your github account
+
+pull request
+------------------------------------------
+create a merge commit -> during merge create commit message
+Squash and merge -> during merge commit message deoes't create
+rebase and merge -> during merge base will be compare base
+
+for getting updated code
+git fetch origin main -> keep code changes from remote
+git rebase origin/main -> apply code locally
+
+git pull origin main -> apply changes code at the same time
+
+git pull vs git rebase
+----------------------------------------------------------
+git pull  origin main -> fetch and merge create a new merge commit
+git rebase origin/main -> during merge avoid extra commit. before rebase you have to use  fetch  command. 
+
+
+git reset (for wrong commit)
+-----------------------------------
+git reset HEAD~1 -> undo one commit and code changes will unstage
+git reset --hard origin/current-branchname -> remove local code and override from remote
+
+
+git reflog
+--------------------------------------------
+locally merge (learn)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

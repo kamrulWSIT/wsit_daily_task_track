@@ -1,0 +1,11 @@
+wordpress hooks
+-----------------------------
+filter hooks: filter hooks allow to modify data before display on the website
+action hooks: action hooks allow developers to execute custom code at specific points in the WordPress core code.
+
+Actions vs. Filters
+----------------------------------------
+The main difference between an action and a filter can be summed up like this:
+
+1. an action takes the info it receives, does something with it, and returns nothing. In other words: it acts on something and then exits, returning nothing back to the calling hook.
+2. a filter takes the info it receives, modifies it somehow, and returns it. In other words: it filters something and passes it back to the hook for further use.

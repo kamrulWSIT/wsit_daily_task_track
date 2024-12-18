@@ -1,0 +1,75 @@
+git reflog
+---------------------------------------
+Recovering Lost Commits: If you accidentally reset a branch or deleted a commit, git reflog can help you locate the commit hash of the "lost" commit and restore it.
+Undoing a Hard Reset: If you use git reset --hard and realize you made a mistake, you can use git reflog to find the commit before the reset and restore it.
+After a Rebase or Merge Conflict: If a rebase or merge goes wrong, you can use git reflog to find the previous states of HEAD and recover.
+Finding Old Branch References: If you delete a branch but need its last commit, git reflog can show you the commit where the branch was last pointing.
+
+if accidently delete a commit then use git log ,this command will notshow this commit. but git reflog track all previous commit history.
+it keeps private record of commits.
+
+basic command 
+-------------------
+git reflog
+git checkout -b reflog(branchname) c02a311(that branch latest commit) -> if accidently delete a branch the use this command
+
+if accidently delete a commit then use 
+git checkout -b recovered-branch(new branch name) c02a311(deleted commit hash) -> create a new branch with deleted commit hash
+
+git checkout -b recovered-branch c02a311
+
+
+Git cherry-picking
+-----------------------------------------
+when in my branch have three commits like a, b, c. and another branch have two commits like aa, bb. now i want aa commit in my branch the we have to use
+git cherry-pick hash(hash number)
+if we want multiple commit in my branch then we have to use .
+git cherry-pick hash(hash number) hash(hash number)
+
+how to cherry pick without commit
+--------------------------------------------
+git cherry-pick hash(hash number) -n
+
+git stash
+----------------------------------------
+Git stash is used to temporarily save changes in your working directory without committing them, allowing you to switch branches or perform other tasks without losing your progress.
+
+If you're working on a feature and need to switch to another branch (e.g., to fix a bug), but you don't want to commit your incomplete work:
+git stash
+git checkout <branch>
+
+Before pulling changes from a remote repository, you may need to stash your uncommitted changes to prevent conflicts:
+git stash
+git pull
+git stash apply
+
+If you need a clean working directory for testing, running scripts, or checking out another branch:
+git stash
+
+
+stash basic command
+------------------------------------------
+Stash changes: Save all uncommitted changes.
+git stash
+
+View stash list: Check stored stashes.
+git stash list
+
+Apply the most recent stash: Reapply stashed changes without removing them from the stash list.
+git stash apply
+
+Pop the most recent stash: Reapply and remove it from the stash list.
+git stash pop -> first apply then remove stash list
+
+Drop a specific stash: Remove a stash from the list.
+git stash drop <stash-id>  
+
+Stash specific files: Use git stash push with a path to stash only selected files.
+git stash push <file-path>
+
+
+locally merge branch to branch
+---------------------------------------------------
+git rebase branchName
+
+
