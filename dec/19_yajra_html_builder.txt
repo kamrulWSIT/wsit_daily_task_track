@@ -1,0 +1,86 @@
+Yajra datatable
+--------------------------------
+setRowClass
+setRowId
+setRowAttr
+setRowData
+
+addColumn
+in table head add th
+and  add { data: 'role', name: 'role' }, role column name and get every users first role name
+
+editColumn
+
+html builder package
+------------------------
+for user model datatables
+use php artisan datatable:make User --model
+
+route is 
+Route::get('/datatables', function(UserDataTable $dataTable){
+    return $dataTable->render('testDatatable');
+});
+
+
+in main blade file <div class="container">
+        <div class="row">
+           @section('contents')
+            @show
+        </div>
+    </div>
+
+    @stack('scripts')
+
+in content file
+@extends('appTestDatatable')
+
+@section('contents')
+    {!! $dataTable->table(['class' => 'table table-bordered'], true) !!}
+@endsection
+
+@push('scripts')
+    {!! $dataTable->scripts() !!}
+@endpush
+
+
+
+Html Builder Config
+--------------------------
+command php artisan vendor:publish --tag=datatables-html
+is used to publish the DataTables HTML configuration files provided by the Yajra Laravel DataTables package
+
+1. If you need to modify the default DataTables HTML structure
+2.To customize language or add specific attributes or styles to your DataTables.
+3. If the default stubs do not meet your requirements, publishing them lets you extend or override the
+default behavior.
+
+editor plugin (incomplete)
+--------------------------
+require yajra/laravel-datatables-editor:^1.0
+download php from https://editor.datatables.net/download/
+js and css add public folder in laravel project
+
+php artisan datatables:editor User --model 
+php artisan make:controller UsersController
+php artisan datatables:make Users
+php artisan datatables:editor Users
+
+add route
+Route::resource('tables', UsersController::class);
+
+in UserController add
+public function index(UsersDataTable $dataTable)
+    {
+        return $dataTable->render('users.index');
+    }
+
+    public function store(UserDataTableEditor $editor)
+    {
+        return $editor->process(request());
+    } 
+
+
+have to learn 
+-------------------
+infinite scroll
+add loader in datatable during data load
