@@ -80,6 +80,10 @@ public function index(UsersDataTable $dataTable)
     } 
 
 
+resource : https://www.youtube.com/playlist?list=PLe30vg_FG4OTjUsNsjkGQF-Qco1HSgy13
+	https://yajrabox.com/docs/laravel-datatables/8.0/html-installation
+github : https://github.com/kamrulWSIT/spatie_role_permission
+
 have to learn 
 -------------------
 infinite scroll
