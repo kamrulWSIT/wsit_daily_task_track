@@ -1,0 +1,8 @@
+Laravel Infinite Scroll & Loading
+------------------------------------------------
+implement Server-side Processing done in personal project
+
+resource: https://datatables.net/extensions/scroller/examples/initialisation/server-side_processing.html
+gitHub: https://github.com/kamrulWSIT/infinite_scroll_loading
+
+vehicle view search and try to implement server side processing monez-new(still incomplete) 
