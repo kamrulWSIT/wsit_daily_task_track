@@ -1,0 +1,20 @@
+Learn 
+---------------------------------------------------------
+Server-side processing 
+Server-side processing (5,000,000 rows)
+
+difference between these two things
+
+source :
+https://datatables.net/examples/data_sources/server_side.html
+https://datatables.net/extensions/scroller/examples/initialisation/server-side_processing.html
+
+practice link: 
+github: https://github.com/kamrulWSIT/Server_side_processing/tree/main
+
+Server-side processing Scroll implement in monez-new kh_infinite_scroll branch
+
+
+
+
+tightenco/ziggy -> have to learn this package
