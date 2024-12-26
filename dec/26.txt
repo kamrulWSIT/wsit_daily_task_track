@@ -1,0 +1,12 @@
+setup new laravel project with version 9
+
+add yajra for both server side processing using separate route
+use left join for another table data
+try multiple left join but still erorr ****
+add mysql indexes
+
+add custom search in ajax method
+
+
+https://github.com/kamrulWSIT/playing_with_datatable
+https://github.com/datacharmer/test_db
