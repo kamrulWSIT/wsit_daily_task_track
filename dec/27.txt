@@ -4,6 +4,7 @@ learn ziggy package
 
 implement ziggy (working but header duplicate and per page & paginage show without working)
 
+learn debug from mitul bhai
 
 
 https://github.com/kamrulWSIT/playing_with_datatable
