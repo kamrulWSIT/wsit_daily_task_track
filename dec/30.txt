@@ -1,0 +1,3 @@
+after adding ziggy , in data table show paginate , duplicate head and length, fix this using style in script (new things for me)
+email send learn and implement with mailtrap
+learn queue(have to implement)
