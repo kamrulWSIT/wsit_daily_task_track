@@ -1,0 +1,14 @@
+Queue
+---------------------
+php artisan queue:table 
+then if jobs table is not exixts in database the command php artisan migrate
+
+then create a job using php artisan make:job "name" like(SendMailJob)
+
+1. Basic Queue
+2. Queue Priority
+3. Queue - Handling Failed Job
+
+Multiple Queue Worker - Why And When (try to understand)
+
+https://github.com/kamrulWSIT/email_queue
