@@ -1,0 +1,8 @@
+1. use select 2 and implement
+2. create a country json file keep in project & show all country from this json file in view using select 2.
+3. implement select2 data load with ajax chunk by chunk. 
+4. select 2 search working with ajax load (it was not working)
+
+
+resource: https://www.youtube.com/watch?v=6uoDt3owpQc
+gitHub: https://github.com/kamrulWSIT/kh_select_2
