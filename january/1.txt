@@ -1,0 +1,4 @@
+try to fix "Trying to access array offset on value of type null"
+but still this error
+
+explor laravel documentation (laravel api)
