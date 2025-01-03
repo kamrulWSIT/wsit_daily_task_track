@@ -1,0 +1,11 @@
+1. custom filter added to yajra datatable using select option
+
+gitHub: https://github.com/kamrulWSIT/playing_with_datatable/tree/filter
+
+2. laravel-breadcrumbs
+	composer require diglactic/laravel-breadcrumbs
+	php artisan vendor:publish --tag=breadcrumbs-config
+
+implemented but i will be more clear when will work in a real life cenario
+
+gitHub: https://github.com/kamrulWSIT/kh_breadcrumbs
