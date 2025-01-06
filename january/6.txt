@@ -1,0 +1,20 @@
+
+how create google recaptcha
+https://www.google.com/recaptcha/admin/create
+albertcht/invisible-recaptcha
+
+in env
+# INVISIBLE RECAPTCHA
+INVISIBLE_RECAPTCHA_SITEKEY=6LfMrM4ZAAAAAC28XE9r7rM13ymUyKiJXLGiwOJo
+INVISIBLE_RECAPTCHA_SECRETKEY=6LfMrM4ZAAAAADzgHY8t4MBqXJn7J4lw_GG2M8ft
+INVISIBLE_RECAPTCHA_BADGEHIDE=false
+INVISIBLE_RECAPTCHA_DATABADGE='bottomright'
+INVISIBLE_RECAPTCHA_TIMEOUT=5
+INVISIBLE_RECAPTCHA_DEBUG=false
+
+erorr fixed for invisible-recaptcha
+explore monez old and try to understand ***
+
+Read guzzlehttp/guzzle articale
+Read mailgub article
+
