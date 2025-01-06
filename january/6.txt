@@ -16,5 +16,5 @@ erorr fixed for invisible-recaptcha
 explore monez old and try to understand ***
 
 Read guzzlehttp/guzzle articale
-Read mailgub article
+Read mailgun article
 
