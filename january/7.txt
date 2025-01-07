@@ -1,0 +1,12 @@
+Monez Old
+---------------------------------------------
+add filtering feature in old monez project
+filter in dealers/fb-posts add in dealers/fb-mk-error
+1. Status filter
+2. Account filter
+3. Auto reply filter
+Branch Name: kh_feature_1
+
+
+add dealer active inactive filter in dealers/fb-mk-error
+Branch Name: kh_dealer_status_filter
