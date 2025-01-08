@@ -5,3 +5,31 @@ change status filter from radio button to deop-down for
 1. Active status
 2. Inactive status
 3. All status
+
+
+Lotti Dashboard
+---------------------------------
+Webhook
+---------------------------------
+webhook: Webhooks are usually used to connect apps and systems, allowing them to share real-time data.
+Typically, there are two ways your apps can communicate with each other to share information: polling and webhooks
+
+
+Source: https://zapier.com/blog/what-are-webhooks/
+
+
+Need to learn
+------------------------
+1. Data Driven
+2. TTN
+3. State management handled using pinia (in vue js)
+
+Production Dependencies vs Dependencies
+--------------------------------------------------------
+-------------------------   "datatables.net": "^2.1.2",
+--------------------------   "datatables.net-dt": "^2.1.2",
+---------------------------   "moment": "^2.30.1",
+
+
+**** Get the initial project idea from lotti V2 document**** 
+
