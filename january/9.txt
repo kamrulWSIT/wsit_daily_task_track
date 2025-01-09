@@ -3,6 +3,9 @@ Lotti Dashboard
 explore lotti doc v2 and code base 
 try to understand functionalities
 
+
+run the code base from develop branch and explore the site given credentials.
+
 find the changes which is in modal
 tab name is reports in modal, only available for device history.
 datatable and reports available with filtering.
