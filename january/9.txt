@@ -1,0 +1,14 @@
+Lotti Dashboard
+------------------------
+explore lotti doc v2 and code base 
+try to understand functionalities
+
+find the changes which is in modal
+tab name is reports in modal, only available for device history.
+datatable and reports available with filtering.
+
+table column date clickable. initial resnder data monthly after click the date then render weekly then render 
+daily the hourly then per 30 min wise render data and generate reports.
+
+
+
