@@ -1,0 +1,33 @@
+Lotti Dashboard
+------------------------------
+added / cahnges functionality add to document file based on code base.
+
+lotti admin
+----------------------------
+clone the code and run the code base
+check the functionality as a testuser
+start to create a lotti admin doument base on the code base.
+  
+   
+    
+  
+    
+  
+   
+  
+   
+   
+   
+   
+   
+   
+    
+    
+   
+   
+  
+   
+   
+   
+   
+    
