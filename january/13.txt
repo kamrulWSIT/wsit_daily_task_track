@@ -1,0 +1,16 @@
+Lotti Admin
+----------------------------
+code read understanding the functionality by userinterface
+and make documentation
+
+Documentation
+---------------------------
+1. Functionalities
+2. Main.js
+3. App.vue
+4. Route
+5. Middleware
+6. Pages:
+	Login.vue
+	Dashboard.vue
+	Userlist.vue
