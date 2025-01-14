@@ -1,0 +1,24 @@
+Lotti Admin
+----------------------------
+code read understanding the functionality according to user interface
+and make documentation
+
+Documentation
+---------------------------
+Page:
+	1. Projects.vue
+	2. Building.vue
+	3. Devices.vue
+	4. DeviceType.vue
+	5. RoomType.vue
+Common features
+API
+URL Configuration
+Endpoints
+Methods
+API Functions
+
+Due
+-------------------
+components
+store
