@@ -1,0 +1,8 @@
+Lotti Admin
+----------------------------
+code read understanding the functionality according to user interface
+and make documentation
+
+monez-new
+------------------
+working : cmc - 4718
