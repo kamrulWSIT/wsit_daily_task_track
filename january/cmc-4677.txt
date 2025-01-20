@@ -1,0 +1,89 @@
+ if ($request->filled('status')) {
+                $accountStatus = $request->input('status');
+                // dd($accountStatus);
+                if ($accountStatus == 'active') {
+                    $dealersQuery = $dealersQuery->where('active', true);
+                }else if($accountStatus == 'inactive'){
+                    $dealersQuery = $dealersQuery->where('active', false);
+                }
+            }else {
+                $dealersQuery = $dealersQuery->where('active', true);
+            }
+
+
+            if ($request->filled('account_auto_reply_status')) {
+                $autoReplyStatus = $request->input('account_auto_reply_status');
+
+                if ($autoReplyStatus === 'on') {
+                    $dealersQuery = $dealersQuery->where('auto_reply', true);
+                } else if ($autoReplyStatus === 'off') {
+                    $dealersQuery = $dealersQuery->where('auto_reply', false);
+                }
+            }
+
+
+            if ($request->filled('account_ocr_status')) {
+                $ocrStatus = $request->input('account_ocr_status');
+
+                if ($ocrStatus === 'on') {
+                    $dealersQuery = $dealersQuery->where('setting.ocr_text_image_removal', true);
+                } elseif ($ocrStatus === 'off') {
+                    $dealersQuery = $dealersQuery->where('setting.ocr_text_image_removal', false);
+                }
+            }
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+public function scopeDealersDataFetch($query)
+    {
+        return $query->select('id', 'name', 'ftp_last_modified', 'exporter', 'wholesale', 'local', 'source', 'active', 'auto_reply' ,'send_csv_to_ftp',
+            'send_csv_to_ftp2', 'send_csv_to_ftp3', 'send_csv_to_cargurus', 'send_csv_to_autotrader', 'send_csv_to_ftp4', 'send_csv_to_ftp5')
+            ->with('reporting:id,dealer_id,created_at', 'accountInfos:id,dealer_id,account_type,account_status', 'accountInfos.status', 'setting:id,dealer_id,ocr_text_image_removal');
+
+    }
+----------------------------------------------------------------------------------------------
+
+  d['status'] = $('select[name="status"]').val();
+                        d['account_auto_reply_status'] = $('select[name="account_auto_reply_status"]').val();
+                        d['account_ocr_status'] = $('select[name="account_ocr_status"]').val();
+--------------------------------------------------------------------------------------------------
+
+  $(`<select name="status" id="account_status_select" style="background-color: white;" class="form-control-sm ml-1">
+                    <option value="">-- Status --</option>
+                    <option value="active" selected>Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="all">All</option>
+                </select>`
+            ).insertBefore(".dataTables_filter");
+
+
+
+            $(`<select name="account_auto_reply_status" id="account_auto_reply" class="form-control-sm ml-1 table-data-filter">
+                <option value="">-- Auto Reply --</option>
+                <option value="on">On</option>
+                <option value="off">Off</option>
+            </select>`).insertAfter(".dataTables_filter");
+
+
+            $(`<select name="account_ocr_status" id="account_ocr_reply" class="form-control-sm ml-1 table-data-filter">
+                <option value="">-- OCR Status --</option>
+                <option value="on">On</option>
+                <option value="off">Off</option>
+            </select>`).insertAfter(".dataTables_filter");
+
+---------------------------------------------------------------------------------------------------------------
+
+$("#account_status_select").change(function () {
+                table.ajax.reload();
+            });
+
+            $("#account_auto_reply").change(function () {
+                table.ajax.reload();
+            });
+
+            $("#account_ocr_reply").change(function () {
+                table.ajax.reload();
+            });
+
