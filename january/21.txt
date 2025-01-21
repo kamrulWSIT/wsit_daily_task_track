@@ -1,1 +1,45 @@
 Laravel Action Class
+-----------------------------
+https://rezakhademix.medium.com/what-are-laravel-action-classes-and-how-to-use-them-253217c43b06
+
+Using Laravel Controllers, Events, Listeners, Services and Validation Together!
+----------------------------------------------------------------------------------
+https://rezakhademix.medium.com/using-laravel-controllers-events-listeners-services-and-validation-together-e1f1631de08c
+
+
+New way to define Accessors and Mutators in Laravel!
+---------------------------------------------------------
+https://rezakhademix.medium.com/new-way-to-define-accessors-and-mutators-in-laravel-31e06a078530
+
+
+Monez Old
+------------------------
+working on: cmc-4442
+	cmc-4677 ui issue fixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+                        data: 'created_at',
+                        sortable: true,
+                        render: function (data, type, obj, meta) {
+                            if (data) {
+                                const [dateOnly, timeOnly] = data.split(' ');
+                                const formatTime = new Date(data).toLocaleTimeString();
+
+                                return `<p>${dateOnly} ${formatTime || ''}</p>`;
+                            }
+                            return '';
+                        }
+                    },
