@@ -1,0 +1,45 @@
+
+Monez New
+------------------------
+Finding Bug:cmc-4722
+
+for this ticket i have to study 
+app/Http/Actions/Panel/Leads/FetchDealsAction.php
+
+ $leads = Lead::with( ['transferred_to:id,name','dealer:id,name', 'dealer.setting:id,dealer_id,task_manager', 'assigned_to:id,username,type',
+                    'status:id,name', 'financeable_deal:id,dealer_id','financeable_deal.dealer:id,name', 'source_deal', 'source:id,name', 'type:id,name','customer:id,first_name,last_name,ProfileImageURL,FBProfileURL'])
+                ->where(function ($query) {
+                    $query->whereRaw('confirmationStatus = 1 and OTP is null')->orWhereRaw('confirmationStatus = 0 and OTP is null')->orWhereRaw('confirmationStatus = 1 and OTP is not null');
+                })
+                    ->select(['id','car_id', 'dealer_id', 'customer_id', 'vechile_title', 'product_title', 'product_id', 'source', 'source_id', 'status', 'assinged_to', 'type', 'type_id', 'created_by', 'created_at',
+ 'updated_at', 'confirmationStatus', 'OTP',  DB::raw("CONCAT_WS(' ', vechile_title, product_title) AS title")])
+                ->whereIn('type_id', isItemsDomain() ? [9] : [9, 10])
+                ->whereIn('leads.dealer_id', $ids)
+                ->where(function($query) {
+                    $query->where('created_by', auth()->user()->id)
+                        ->when(!auth()->user()->isTmMember(), function($q){
+                            $q->orWhereNull('created_by');
+                        })
+                        ->orWhere('assinged_to', auth()->user()->id);
+                });
+
+https://chatgpt.com/c/6790d597-5f70-8001-b0be-c19a312dfeec
+
+
+Learn : Understanding Laravel belongsTo and hasMany Relationships 
+---------------------------------------------------------------------
+One-To-Many Relation
+-----------------------
+hasMany
+belongsTo
+Resource: https://medium.com/@andreelm/understanding-laravel-belongsto-and-hasmany-relationships-b6355d2a7742
+
+
+morphOne Relation 
+---------------------------
+https://chatgpt.com/c/6790b2c7-987c-8001-9db3-bf15867b2592
+--------------------------------------------------------------
+
+Monez Old 
+---------------------
+cmc-4442 issue fixed in branch cmc-4442-fix

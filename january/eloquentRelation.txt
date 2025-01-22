@@ -1,0 +1,12 @@
+Learn : Understanding Laravel belongsTo and hasMany Relationships 
+---------------------------------------------------------------------
+One-To-Many Relation
+-----------------------
+hasMany
+belongsTo
+Resource: https://medium.com/@andreelm/understanding-laravel-belongsto-and-hasmany-relationships-b6355d2a7742
+
+
+morphOne Relation 
+---------------------------
+https://chatgpt.com/c/6790b2c7-987c-8001-9db3-bf15867b2592
