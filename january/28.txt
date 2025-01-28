@@ -2,40 +2,28 @@ Make document of monez old
 ----------------------------------------
 https://docs.google.com/document/d/1un_WJPg_rwYsJC2nMQxO1TH3zxIA7qIxM-wuaKchFUs/edit?tab=t.u11p3kiddqc0
 
-https://chatgpt.com/c/679708b5-a69c-8001-8786-fd3fd4a531cb
+1. Car -Histrory
+2. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/', 'HomeController@index')->name('home');
-    
-   
-    Route::get('/my-vehicles-exportable', 'CarsController@exportableCarsForUser')->name('cars.exportable-for-user');
-    
-    Route::get('/dealers/{dealer}/fetch-without-scraping', 'DealersController@fetchWithoutScraping')->name('dealers.fetch-without-scraping');
-    Route::get('/dealers/{dealer}/master-duplicate', 'DealersController@duplicateMaster')->name('dealers.master.duplicate');
-  
-    Route::get('/car/downloadCSV', 'CarsController@downloadCSV')->name('cars.downloadCSV');
-    Route::get('/car/upload', 'CarsController@upload')->name('car.upload');
-    Route::get('/car/getImages/{id?}', 'CarsController@getImages')->name('car.getImages');
- 
-   
-    Route::post('/cars/updateImages', 'CarsController@updateImages')->name('cars.updateImages');
- 
-    Route::post('cars/uploadVideo', 'CarsController@uploadVideo')->name('cars.uploadVideo');
-    Route::post('cars/video/destroy', 'CarsController@deleteVideo')->name('cars.video.destroy');
-    Route::delete('/cars/images/destroy', 'CarsController@destroyMultipleImage')->name('cars.destroy-multiple.image');
-    
-    Route::get('/cars/print-pdf/status', 'CarsController@multiplePdfStatus')->name('cars.print-pdf-status');
-  
-    Route::put('/cars/control/destroy', 'CarsController@destroyAdminControl')->name('cars.control.destroy');
-    Route::post('/cars/upload', 'CarsController@uploadfile')->name('cars.upload');
-    Route::get('/dealers/{dealerId}/cars/{carId}', 'CarsController@show')->name('cars.show');
 
- 
-    Route::get('/dealers/{dealer}/exportable-cars', 'DealersController@exportableCars')->name('dealers.exportable-cars');
-
-    Route::get('/car-details-pdf', 'CarsController@getDetailsPdf')->name('cars.get-details-pdf');
+   
     Route::get('/get-file-list', 'DealersController@getFileListFromStorage');
     Route::post('/car/status-update', 'CarsController@statusUpdate')->name('cars.status-update');
    
@@ -43,83 +31,22 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('get-trim', 'CarsController@getTrim')->name('get-trim');
     Route::get('get-year', 'CarsController@getYear')->name('get-year');
     Route::get('get-all-images', 'CarsController@downloadAllCarImages')->name('cars.get-all-images');
-    
-    Route::get('/dealers/{dealerId}/cars/{carId}/edit', 'CarsController@edit')->name('cars.edit');
+  
 
-    Route::post('/watermarks/deleteImage', 'WatermarksController@deleteImage')->name('watermarks/deleteImage');
-    Route::post('/watermarks/temp/{id}/delete', 'WatermarksController@deleteTempImage')->name('watermarks.temps.delete');
-    Route::post('/watermarks/{watermark}/preview', 'WatermarksController@preview')->name('watermarks.preview');
-
-
-    Route::resource('contacts', 'CustomerController')->except([ 'show' ]);
-
-    Route::resource('car-finder', 'CarFinderController')->except([ 'show' ]);
-
-    Route::resource('car-finder-scrapper', 'CarFinderScrapperController')->except([ 'show' ]);
 
     Route::get('/contact-request', 'LeadsController@contact_request')->name('leads.contact_request');
-    Route::post('leads/getcarinfo', 'LeadsController@getCarInfo')->name('leads.car.info');
-    Route::post('leads/dealers/info', 'LeadsController@getDealerInfo')->name('leads.dealers.info');
-    Route::post('leads/cars/info', 'LeadsController@getVehicles')->name('leads.cars.info');
-   
-    Route::get('leads/status/history', 'LeadsController@statusHistory')->name('leads.status-history');
-    Route::post('leads/status/history/delete', 'LeadsController@statusHistoryDelete')->name('leads.status-history-delete');
+    
+ 
 
-
-    Route::post('leads/notes/update', 'LeadsController@notesUpdate')->name('leads.notes.update');
-    Route::post('leads/assign/user', 'LeadsController@assignUser')->name('leads.assign.user');
-
-    Route::get('leads/fetch/admin-data','LeadsController@adminData')->name('leads.fetch.admin-data');
-
-    Route::get('leads/fetch/admin-dealers-data','LeadsController@adminDealersData')->name('leads.fetch.admin-dealers-data');
-    Route::get('leads/summary','LeadsController@summary')->name('leads.summary');
-    Route::get('leads/dealers-summary','LeadsController@dealersSummary')->name('leads.dealers.summary');
-
-
-
-    Route::get('leads/stats/dealer/date', 'LeadsController@LeadStatsDealerByDate')->name('leads.dealers.date');
-    Route::resource('leads', 'LeadsController');
+    Route::post('follow/{id}', 'FollowUpController@followUp')->name('follow-up');
+    Route::post('google-sms-reqeust/{id}', 'SocialBoostController@googleSmsRequest')->name('google-sms-request');
+    Route::get('/account-status', 'AccountActivationPromptController@index')->name('account.notice');
+    Route::get('/documents/go-to-car-view', 'DocumentsController@car_view_with_vin')->name('cars.show.withVin');
 
   
 
-    Route::resource('finance-request', 'FinanceRequestController', ['names' => ['index' => 'finance-request', 'edit' => 'finance-request.edit']]);
-
-    Route::post('follow/{id}', 'FollowUpController@followUp')->name('follow-up');
-
-    Route::post('social-boost/{id}/{dealer_id}', 'SocialBoostController@boost')->name('social-boost');
-
-    Route::post('google-sms-reqeust/{id}', 'SocialBoostController@googleSmsRequest')->name('google-sms-request');
 
 
-    Route::get('/account-status', 'AccountActivationPromptController@index')->name('account.notice');
-
-    Route::prefix("inventory")->name("cars.histories.")->group(function () {
-        Route::get('/histories', 'CarHistoryController@manage')->name('manage');
-        Route::get('/{history}/histories', 'CarHistoryController@show')->name('show');
-        Route::get('/history/update-done', 'CarHistoryController@updateDoneorNot')->name('update-done');
-        Route::get('/history/deleteAllDone', 'CarHistoryController@carhistory_deleteAllDone')->name('deleteAllDone');
-        Route::get('/history/deleteAllCron', 'CarHistoryController@carhistory_deleteAllCron')->name('deleteAllCron');
-        Route::delete('/{history}/delete', 'CarHistoryController@delete')->name('delete');
-        Route::delete('/histories/destroy-multiple', 'CarHistoryController@destroyMultiple')->name('destroy-multiple');
-        Route::get('/histories/destroy-all', 'CarHistoryController@destroyAll')->name('destroy-all');
-        Route::get('/histories/all-by-users', 'CarHistoryController@allByUsers')->name('all-by-users');
-
-        #Disable onetime inventory logs checking actions
-        //Route::get('/histories/check-logs', 'CarHistoryController@CheckAllLogs')->name('CheckAllLogs');
-    });
-    Route::get('/documents/go-to-car-view', 'DocumentsController@car_view_with_vin')->name('cars.show.withVin');
-
-    # Advance Search routes
-    Route::prefix('advance-search')->name('advance-search.')->group(function () {
-        Route::get('/', 'AdvanceSearchController@manage')->name('manage');
-        Route::get('/fetch', 'AdvanceSearchController@fetch')->name('fetch');
-        Route::get('/fetch/makers', 'AdvanceSearchController@fetchMakers')->name('fetch.makers');
-        Route::get('/fetch/models', 'AdvanceSearchController@fetchModels')->name('fetch.models');
-        Route::get('/fetch/years', 'AdvanceSearchController@fetchYears')->name('fetch.years');
-        Route::get('/fetch/trims', 'AdvanceSearchController@fetchTrims')->name('fetch.trims');
-    });
-
-    Route::get('dealers/{dealer}/cars/{car}/details', 'CarsController@details')->name('car.details');
     Route::get('user-package', 'HomeController@userPackage')->name('user.package');
 
     Route::middleware('auth:web')->name('dealers.')->namespace('Panels\Dealer')->group(function () {
@@ -130,7 +57,4 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('/tasksfetch', 'DashboardController@fetchPendingTaskRecords')->name('tasks.fetch');
 
     });
-
-    // For QR Fuel list --
-    Route::resource('qr-fuels', 'QrFuelsController');
 });
