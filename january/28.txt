@@ -3,21 +3,17 @@ Make document of monez old
 https://docs.google.com/document/d/1un_WJPg_rwYsJC2nMQxO1TH3zxIA7qIxM-wuaKchFUs/edit?tab=t.u11p3kiddqc0
 
 1. Car -Histrory
-2. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+2. QR Fual Management
+3. Advanc Search
+4. Home
+5. Add route in the car
+6. Add route in the watermarks
+7. Finance Request
+8. Add route in the Dealers
+9. Add route in the Leads
+10. Car Finder Sracpper
+11. Car Finder.
+12. Conatcts.
 
 
 
