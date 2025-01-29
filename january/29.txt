@@ -2,63 +2,39 @@ Make document of monez old
 ----------------------------------------
 https://docs.google.com/document/d/1un_WJPg_rwYsJC2nMQxO1TH3zxIA7qIxM-wuaKchFUs/edit?tab=t.u11p3kiddqc0
 
+1. Add route to Dealers.
+2. Add route to Cars
+3. Add route to Leads
+4. Add Car Status
+5. Add route to Home.
+6. Add Dashboard
+7. Add route to Home.
+8. Add route to Sociakl boost
+9. Add Accounts
+10. Add Documents
+11. Add route to Users
+12. Add super admin.
+
+
+
+
+
+
+
+
+
+
+
 https://chatgpt.com/c/6799afbe-d8a8-8001-b0f3-3d49e8d7090e
 
 
 
 
-
-
-
-
-
 Route::group(['middleware' => 'super_admin'], function () {
-
-   
-   
-   
-    
-   
- 
-
-
-
-    
-   
-   
-   
-    
-    
-   
-   
-   
-   
-
- 
-
- 
-
-  
-
-
-  
-
    
     Route::get('accounts', 'DealersController@index')->name('dealers');
 
 
-
-
-
-
-    
-
-
- 
-
-   
-
- 
      /**** FB Black List****/
     Route::resource('fb-black-list', 'FBBlackListController');
     Route::post('/fb-black-list/destroy/multiple', 'FBBlackListController@destroy_multiple')->name('fb_black_list.destroy.multiple');
