@@ -2,80 +2,86 @@ Make document of monez old
 ----------------------------------------
 https://docs.google.com/document/d/1un_WJPg_rwYsJC2nMQxO1TH3zxIA7qIxM-wuaKchFUs/edit?tab=t.u11p3kiddqc0
 
+
+
+1. Add route to super admin.
+
+Lotti
+--------------------------------------------------------------------
+1. Make some currection from previous work.
+2. Lotti Admin document started from there as much as i had done before.
+
+have to start from components:
+--------------------------------
+1. Card
+2. Table Pagination
+3. Modal
+4. V Select
+5. Tree Select
+6. Floor
+7. Building
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 https://chatgpt.com/c/6799afbe-d8a8-8001-b0f3-3d49e8d7090e
-
-1. Add route to Dealers.
-2. Add route to Cars
-3. Add route to Leads
-4. Add Car Status
-5. Add route to Home.
-6. Add Dashboard
-7. Add route to Home.
-8. Add route to Sociakl boost
-9. Add Accounts
-10. Add Documents
-11. Add route to Users
-12. Add super admin.
-
 
 
 Route::group(['middleware' => 'super_admin'], function () {
    
     Route::get('accounts', 'DealersController@index')->name('dealers');
-
-
-     /**** FB Black List****/
-    Route::resource('fb-black-list', 'FBBlackListController');
-    Route::post('/fb-black-list/destroy/multiple', 'FBBlackListController@destroy_multiple')->name('fb_black_list.destroy.multiple');
-    Route::post('/fb-black-list/get/vin/dealer', 'FBBlackListController@get_vin_by_dealer')->name('fb_black_list.get.vin.dealer');
-     /**** Package Settings Controller ****/
-    Route::resource('package-controller', 'PackageSettingsController');
-    Route::post('package-controller/get/account/type', 'PackageSettingsController@get_account_type')->name('package_controller.get_account_type');
-    Route::post('/package-controller/destroy/multiple', 'PackageSettingsController@destroy_multiple')->name('package.controller.destroy.multiple');
-    Route::post('/package-controller/destroy', 'PackageSettingsController@destroy_single')->name('package.controller.destroy');
-    /**** Package Settings Controller ****/
-    Route::resource('follow-up-settings', 'FollowUpSettingsController');
-    Route::post('follow-up-settings-edit', 'FollowUpSettingsController@edit')->name('follow-up-settings.follow_up_edit');
-    Route::post('follow-up-settings-store', 'FollowUpSettingsController@store')->name('follow-up-settings.store');
-    Route::post('follow-up-settings-follow_up_delete', 'FollowUpSettingsController@delete')->name('follow-up-settings.follow_up_delete');
-    Route::post('follow-up-settings-follow_up_delete_multiple', 'FollowUpSettingsController@delete_multiple')->name('follow-up-settings.follow_up_delete_multiple');
-
-    Route::get('follow-up-settings-latest-two', 'FollowUpSettingsController@latest_two')->name('follow-up-settings.latest_two');
-
-    /**** FB posts pending****/
-
-    Route::get('fb-post-pending-mysql-function-call', 'DealersController@fbPendingPostDetailsData')->name('fb.post.pending.mysql.function.call');
-    Route::post('get-car-mk-to-update','CarsController@getCarMk')->name('get.car.mk.to.update');
-    Route::post('mk-open-in-new-tab','CarsController@open_mk_new_tab')->name('car.mk.open.new.tab');
-    /**** AI Conversation ****/
-    Route::resource('ai-conversation', 'AIConversationController');
-    Route::post('ai-conversation-store', 'AIConversationController@store')->name('ai-conversation.store');
-    Route::post('ai-conversation-edit', 'AIConversationController@edit')->name('ai-conversation.edit');
-    Route::post('ai-conversation-delete', 'AIConversationController@delete')->name('ai.conversation.delete');
-    Route::post('ai-conversation-delete-multiple', 'AIConversationController@delete_multiple')->name('ai.conversation.delete.multiple');
-       /**** AI Conversation Keyword ****/
-    Route::post('ai-conversation-keywords-show', 'AIConversationController@keywordsShow')->name('ai.conversation.keywords.show');
-    Route::get('ai-conversation-keywords-datatable', 'AIConversationController@keywordsDatatable')->name('ai.conversation.keywords.datatable');
-    Route::post('ai-conversation-keywords-form', 'AIConversationController@keywordsFormStore')->name('ai.conversation.keywords.form.store');
-    Route::post('ai-conversation-keywords-form-edit', 'AIConversationController@keywordsFormEdit')->name('ai.conversation.keywords.form.edit');
-    Route::post('ai-conversation-keywords-form-delete', 'AIConversationController@keywordsFormDelete')->name('ai.conversation.keywords.form.delete');
-    Route::post('ai-conversation-keywords-form-delete-multiple', 'AIConversationController@keywordsFormDeleteMultiple')->name('ai.conversation.keywords.form.delete.multiple');
-    /**** QR Fuel Controller ****/
-    Route::resource('qr-fuel-control', 'QRfuelController');
-    Route::post('qr/fuel/control/qr/check', 'QRfuelController@qr_id_check')->name('qr.fuel.id.check');
-    Route::post('qr-fuel-control-edit', 'QRfuelController@qr_fuel_edit')->name('qr-fuel-control.qr_fuel_edit');
-    Route::post('qr-fuel-control-delete', 'QRfuelController@delete')->name('qr-fuel-control.delete');
-    Route::post('qr-fuel-control-delete-multiple', 'QRfuelController@delete_multiple')->name('qr-fuel-control.multiple.delete');
-    Route::get('qr-fuel-control-bar-chart', 'QRfuelController@draw_bar_chart')->name('qr-fuel-control.bar.chart');
-    Route::resource('qr-fuel-setting', 'DealerQrFuelSettingController');
-    Route::get('check-redirect-email-by-dealer/{dealer_id}', 'DealerQrFuelSettingController@checkRedirectEmailByDealer')->name('check-redirect-email-by-dealer');
-
-    Route::resource('vehicle-makes.models', 'VehicleModelController', [
-        'except' => ['show']
-    ])
-    ->parameters([
-        'vehicle-makes' => 'make'
-    ]);
 
     Route::resource('vehicle-makes', 'VehicleMakeController', [
         'except' => ['show']
