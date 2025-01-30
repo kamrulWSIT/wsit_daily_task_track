@@ -10,6 +10,7 @@ Lotti
 --------------------------------------------------------------------
 1. Make some currection from previous work.
 2. Lotti Admin document started from there as much as i had done before.
+3. cmc-4832 fix marketing checkbox show/ hide content place. 
 
 have to start from components:
 --------------------------------
