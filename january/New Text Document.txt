@@ -1,0 +1,229 @@
+$(function () {
+            // Highlighting rows and columns on mouseover
+            var table = $('.datatable-ajax').DataTable({
+                processing: true,
+                serverSide: false,
+                ajax: {
+                    url: route('dealers'),
+                    data: function (d) {
+                        //d['status'] = $("input[name='status']:checked").val();
+
+                        d['status'] = $('select[name="status"]').val();
+                        d['account_auto_reply_status'] = $('select[name="account_auto_reply_status"]').val();
+                        d['account_ocr_status'] = $('select[name="account_ocr_status"]').val();
+
+                        d['source'] = $('#dealer-select').val();
+                        d['syndication'] = $('#syndication').val();
+                        d['account_type'] = $('#account_type').val();
+                        d['account_owner'] = $('#account_owner').val();
+                        d['account_status'] = $('#account_status').val();
+                    },
+                },
+                drawCallback: function (settings) {
+                    $('.form-check-input-switch').bootstrapSwitch();
+                    $('.form-check-input-switch').on('switchChange.bootstrapSwitch', function (event, state) {
+                        if (!confirm('are you sure update control this ?')) {
+                            $(this).bootstrapSwitch('state', !state, true);
+                            return false;
+                        }
+                        value = state == true ? 1 : 0;
+                        update({id: $(this).attr('data-id'), key: $(this).attr('name'), value: value}, $(this));
+                    });
+
+                },
+                initComplete: function (settings, json) {
+
+                },
+                order: [[1, "desc"]],
+                lengthMenu: [[10, 20, 30, 100], [10, 20, 30, 100]],
+                columns: [
+                    {
+                        searchable: false, sortable: false,
+                        visible: @json(auth()->user()->can('dealers.modify')),
+                        render: function (data, type, obj, meta) {
+                            return "<input type='checkbox' name='select-" + obj.id + "' value='" + obj.id + "'>";
+                        }
+                    },
+                    {name: "id", data: "id", visible: false, searchable: false},
+                    {
+                        name: "name", data: "name",  searchable: true, render: function (data, type, obj, meta) {
+                            return "<a href='" + route('dealers.edit', {dealer: obj}) + "' target='_blank'> " + data + " </a>";
+                        }
+                    },
+                    {
+                        name: "ftp_last_modified", data: "ftp_last_modified", searchable: false,
+                        render: function (data, type, obj, meta) {
+                            if (type === 'sort') {
+                                return obj.ftp_last_modified;
+                            }
+
+                            return obj.ftp_last_modified;
+                        }
+                    },
+                    {
+                        searchable: false,
+                        render: function (data, type, obj, meta) {
+                        if(obj.local == 1 && obj.wholesale != 1 && obj.exporter != 1){
+                            return "<p>Local</p>";
+                        }
+                        else if(obj.wholesale == 1 && obj.local != 1 && obj.exporter != 1){
+                            return "<p>Wholesaler</p>";
+                        }
+                        else if(obj.exporter == 1 && obj.wholesale != 1 && obj.local != 1 ){
+                            return "<p>Exporter</p>";
+                        }
+                        if(obj.local == 1 && obj.wholesale == 1 && obj.exporter != 1){
+                                return "<p>Local, Wholesaler</p>";
+                        }
+                        if(obj.local != 1 && obj.wholesale == 1 && obj.exporter == 1){
+                                return "<p>Wholesaler, Exporter</p>";
+                        }
+                        if(obj.local == 1 && obj.wholesale != 1 && obj.exporter == 1){
+                                return "<p>Local, Exporter</p>";
+                        }
+                        if(obj.local == 1 && obj.wholesale == 1 && obj.exporter == 1){
+                                return "<p>Local, Wholesaler, Exporter</p>";
+                        }
+                        if(obj.local != 1 && obj.wholesale != 1 && obj.exporter != 1){
+                                return "<p></p>";
+                            }
+                        }
+                    },
+		   {
+                        name: 'active',
+                        data: 'active',
+                        searchable: false,
+                        render: function (data, type, obj, meta) {
+                            if (data)
+                                return "<p>{{__('user.form.active')}}</p>";
+
+                            return "<p>{{__('user.form.inactive')}}</p>";
+                        }
+                    },
+                    {
+                        name: 'source',
+                        data: 'source',
+                        searchable: false,
+                        render: function (data, type, obj, meta) {
+
+                            if (obj.source == 'guru')
+                                return 'Gurus';
+                            if (obj.source == 'carpages')
+                                return 'Car Pages';
+                            if (obj.source == 'monezsoftDealer')
+                                return 'MarketingFuel';
+                            if (obj.source == 'desmeules')
+                                return 'DealerGeeks';
+                            if (obj.source == 'pushingMonezsoft')
+                                return 'DriveGood Website';
+                            return obj.source;
+                        }
+                    },
+                    {name: "count", defaultContent:"0/0", searchable:false, sortable: false,
+                        render: function(data, type, obj, meta){
+                            let dealerId = obj.id;
+                            let activeCarCount= 0;
+                            let count= 0;
+                            let activeCarCounts = @json($activeCarCounts);
+                            $.each(activeCarCounts, function(index, element) {
+                                if (element.id==dealerId) {
+                                    activeCarCount=element.active_car_count;
+                                    return false;
+                                }
+                            });
+                            return activeCarCount ;
+                        }
+                    },
+                    {name: "item", defaultContent:"0/0", searchable:false, sortable: false,
+                        render: function(data, type, obj, meta){
+                            let dealerId = obj.id;
+                            let activeItemCount= 0;
+                            let count= 0;
+                            let activeItemCounts = @json($activeItemCounts);
+                            $.each(activeItemCounts, function(index, element) {
+                                if (element.id==dealerId) {
+                                    activeItemCount=element.active_item_count;
+                                    return false;
+                                }
+                            });
+
+                            return activeItemCount ;
+                        }
+                    },
+
+		{name: "account_type", searchable:false, sortable:false,
+                        render: function(data, type, obj, meta){
+                            if (obj.account_infos && obj.account_infos.account_type == 0){
+                                return 'Drive Good';
+                            }
+                            if (obj.account_infos && obj.account_infos.account_type == 1){
+                                return 'Marketing fuel';
+                            }
+                            return '';
+                        }
+
+                    },
+
+
+
+                    {
+                        data: 'created_at',
+                        sortable: true,
+                        searchable: false,
+                        render: function (data, type, obj, meta) {
+                            if (data) {
+                                const [dateOnly, timeOnly] = data.split(' ');
+                                return `<p>${dateOnly} ${timeOnly || ''}</p>`;
+                            }
+                            return '';
+                        }
+                    },
+
+
+
+
+                    {
+                        visible: @json(auth()->user()->can('dealers.modify')),
+                        searchable: false,
+                        render: function (data, type, obj, meta) {
+                            html = "<td class='text-center'>" +
+                                "<div class='list-icons'>" +
+                                "<div class='dropdown'>" +
+                                "<a href='#' class='list-icons-item' data-toggle='dropdown'>" +
+                                "<i class='icon-menu9'></i>" +
+                                "</a>" +
+                                "<div class='dropdown-menu dropdown-menu-right'>" +
+                                "<a href='" + route('dealers.edit', {dealer: obj}) + "' class='dropdown-item'><i class=' icon-pencil'></i> Edit</a>";
+
+
+                            if (obj.active && obj.source == 'WWW') {
+                                html += "<a href='" + route('dealers.master.duplicate', {dealer: obj}) + "' class='dropdown-item'><i class='icon-copy3'></i> @lang('ui.table.duplicate') @lang('ui.table.master') </a>";
+                            }
+
+                            let fetchNowRoute = obj.source === 'monezsoftDealer' ? 'dealers.fetch-without-scraping' : 'dealers.fetch';
+                            html += "<a href='" + route(fetchNowRoute, {dealer: obj}) + "' class='dropdown-item'><i class='icon-database-refresh'></i> Fetch Now </a>";
+
+                            if (obj.active && obj.source != 'monezsoft') {
+                                let text = obj.source != 'monezsoftDealer' ? 'Fetch Without Scraping' : 'Publish';
+                                html += "<a href='" + route('dealers.fetch-without-scraping', {dealer: obj}) + "' class='dropdown-item'><i class='icon-database-arrow'></i>" + text + "</a>";
+                            }
+
+                            html += "<a href='" + route('dealers.cars-by-dealer', {dealer: obj}) + "' class='dropdown-item'><i class='icon-database-refresh'></i> Inventory </a>";
+                            html += "<a data-href='" + route('dealers.flush') + "' class='dropdown-item flush-data'><i class='icon-trash'></i>{{__('car.flush_data')}}</a>" +
+                                "<form method='POST' action='" + route('dealers.flush') + "' accept-charset='UTF-8'><input name='_token' type='hidden' value='" + window.Laravel.csrfToken + "'><input type='hidden' name='flush_dealer_id' value='" + obj.id + "'></form>";
+                            html += "<a data-href='" + route('dealers.cars.destroy', {dealer: obj}) + "' class='dropdown-item remove-item'><i class='icon-database-remove'></i> Truncate All Inventory </a>" +
+                                "<form method='POST' action='" + route('dealers.cars.destroy', obj) + "' accept-charset='UTF-8'><input name='_method' type='hidden' value='DELETE'><input name='_token' type='hidden' value='" + window.Laravel.csrfToken + "'></form>";
+
+                            if (obj.user) {
+                                html += `<a href='${route('impersonate', {id: obj.user.id})}' class='dropdown-item' title='Logged in as ${obj.user.name}'><i class=' icon-redo2'></i>  Logged in as User</a>`
+                            }
+                            "</div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</td>"
+                            return html;
+                        }
+                    },
+                ],
+
+            }); 
