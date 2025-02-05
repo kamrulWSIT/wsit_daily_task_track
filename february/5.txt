@@ -1,0 +1,7 @@
+Monez-Old
+--------------
+1. explore Jira Ticket helped by Saiful Bhai
+2. Complete a task given by Saiful bhai(Migration related task)
+3. cmc-4490 (do some portion in local) given Mitul Bhai (Ask Mohammad bhai tell what to do next mitul bhai will take next step)
+4. cmc-4837 (Try to fix exact search after that Mitul bhai stop me and that is fixed by my previous work) (given shaiful bhai)
+
