@@ -1,0 +1,7 @@
+monez Old
+-----------------------
+1. cmc-4866 (find error & solved in local reviewed by saiful bhai)
+2. cmc-4541 (Review Mitul bhai ticket)
+3. For revier cmc-4541 (Have to fix local bug and fix)
+4. Learn jQuery from w3 school
+
