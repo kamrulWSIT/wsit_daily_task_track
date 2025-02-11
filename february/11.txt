@@ -1,0 +1,64 @@
+Monez Old
+---------------------------------
+1. cmc-4868
+2. cmc-4872 
+3. cmc-4869 
+
+Monez New
+-------------
+1. cmc-4868 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cmc-4868
+--------------------------------------------------
+ $currestStatus = Status::find($car->status);
+        $currectStatusName =  $currestStatus->name;
+        if ($currectStatusName === 'sold' && $this->request->status === 'publish'){
+            $data['created_at'] = date("Y-m-d H:i:s");
+        }
+
+if (in_array('status', $changed) && !is_null($request->status)) {
+                if ($request->status === 'publish' && $car->status == 'sold') {
+                    $data['created_at'] = date("Y-m-d H:i:s");
+                }
+            }
+
+ public static function constructChangedAttributes($car, Request $request, $attributes = null, array $data = [])
+ $changeAttributes     = self::constructChangedAttributes($car, $request, $changedAttributes);
+
+pass $car
+
+boost_vehicle:  @json(old('boost_vehicle',$dealer->setting ? $dealer->setting->boost_vehicle  : true)),
