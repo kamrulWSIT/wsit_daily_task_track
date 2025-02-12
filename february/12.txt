@@ -1,0 +1,28 @@
+Monez Old
+---------------------------
+cmc - 4541 (mitul bhai ticket review & setup environment)
+cmc - 4871 (need to design issue and functionality)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+C:\laragon\bin\php\php-8.1.10-Win32-vs16-x64
+
+2025_02_12_112117_add_image_validation_column_to_dealer_settings_table.php
+2025_02_12_112400_add_isfetch_mk_column_to_dealers_fbs_table.php
+
+php artisan migrate --path=database/migrations/2025_02_12_112117_add_image_validation_column_to_dealer_settings_table.php
+
+php artisan migrate --path=database/migrations/2025_02_12_112400_add_isfetch_mk_column_to_dealers_fbs_table.php
