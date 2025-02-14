@@ -4,3 +4,8 @@ cmc-4871
 ----------------
 FB App tab > FB App 
 next to Skip days field (create and update)
+
+dealer_settings.Is_ARImage
+Enable Auto Reply Image
+Checkbox
+0 - Unchecked, 1 - Checked
