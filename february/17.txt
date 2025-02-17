@@ -1,0 +1,26 @@
+Monez Old
+------------------
+cmc - 4871 (almost done, due remove image with image url make empty)
+
+
+
+
+
+
+
+
+
+
+
+image_url
+ar_image
+
+ImageURL
+ARImage
+
+ARVideo
+video_url
+
+https://www.youtube.com/shorts/y02mOQudT3E
+
+'ARImageUpdated_at'   => $req->input('ARImage') ? now() : null,
