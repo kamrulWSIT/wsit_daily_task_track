@@ -1,0 +1,42 @@
+.on('filedeleted', function (event, data) {
+                        let currentImages = $('#hidden_ARImage_url').val().split(',');
+                        let updatedImages = currentImages.filter(image => image !== data);
+                        let updatedValue = updatedImages.join(',');
+                        $('#hidden_ARImage_url').val(updatedValue);
+                        setTimeout(function () {
+
+                        }, 900);
+                    });
+
+
+.on('filedeleted', function (event, data, previewId, index) {
+                        console.log("Full Deleted File Data:", data);
+                        console.log("Deleted File Preview ID:", previewId, typeof previewId); // Log type
+
+                        if (typeof previewId !== "string") {
+                            console.error("Error: previewId is not a string!", previewId);
+                            return;
+                        }
+
+                        let deletedImageURL = $(`#${previewId}`).attr('data-fileurl'); // Extract from preview
+                        console.log("Extracted Deleted Image URL:", deletedImageURL);
+
+                        if (!deletedImageURL) {
+                            console.error("Error: Could not extract deleted image URL! Check 'data' log above.");
+                            return;
+                        }
+
+                        let currentImages = $('#hidden_ARImage_url').val().split(',').map(url => url.trim());
+                        let updatedImages = currentImages.filter(image => image.trim() !== deletedImageURL.trim());
+
+                        let updatedValue = updatedImages.join(',');
+
+                        $('#hidden_ARImage_url').val(updatedValue).trigger('change');
+                        $('input[name="ARImage"]').val(updatedValue).trigger('change');
+
+                        console.log("Updated Hidden Input:", updatedValue);
+                    });
+
+
+'Is_ArVideo'   => $req->filled('is_ar_video') && filter_var($req->input('is_ar_video'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,  (regular)
+'fb_leads'           => $req->filled('fb_leads') && filter_var($req->input('fb_leads'), FILTER_VALIDATE_BOOLEAN) ? 1 : 0,  (json)
