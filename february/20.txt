@@ -1,0 +1,53 @@
+Monez New
+-------------------------------
+cmc- 4896
+
+
+
+.daterangepicker select.monthselect {
+    width: 48%;
+}
+
+.daterangepicker select.yearselect {
+    width: 52%;
+}
+
+ $('#start_time').daterangepicker({
+                singleDatePicker: true,
+                timePicker: true,
+                timePickerIncrement: 1,
+                minDate: moment(),
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                },
+                showDropdowns: true,
+            });
+            $('#end_time').daterangepicker({
+                singleDatePicker: true,
+                timePicker: true,
+                timePickerIncrement: 1,
+                minDate: moment().add(1, 'hour'),
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                },
+                showDropdowns: true,
+            });
+
+            $('#start_time').on('change.daterangepicker', function(ev, picker) {
+                let startDate = new Date($('#start_time').val());
+                startDate.setHours(startDate.getHours() + 1);
+
+                let endDate = startDate;
+
+                $('#end_time').daterangepicker({
+                    singleDatePicker: true,
+                    timePicker: true,
+                    timePickerIncrement: 1,
+                    minDate: endDate, // Ensure end time cannot be before updated start time
+                    startDate: endDate, // Set end time to 1 hour after the updated start time
+                    locale: {
+                        format: 'YYYY-MM-DD HH:mm:ss'
+                    },
+                    showDropdowns: true,
+                });
+            });
