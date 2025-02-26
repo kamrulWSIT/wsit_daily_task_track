@@ -1,0 +1,62 @@
+Lotti Admin documemntation
+
+
+
+
+
+
+
+
+
+
+Admin/Users/UserList.vue
+	fetchUsers() -------- GET --------------/user/list -----------------Gets list of users with pagination
+	fetchProjects()-------GET -------------/project/all-----------------Gets all projects
+	userDeviceMqtt()------	GET-------------/user/devices/mqtt?user={id} ----------	Gets MQTT device info for a user
+	submitDeviceMqtt()------POST------------/user/devices/mqtt/update---------------Updates MQTT device settings
+	deleteUser() ----------POST----------/user/delete/{userId}--------------------Deletes a specific user
+	currentPageHandler()-----GET----------/user/list?page={page}-------------------Gets paginated users for specific page
+	saveUser()---------------POST-----------/user/create---------------------Creates a new user
+	saveUser()--------------POST------------/user/update/{id}-----------------Updates an existing user
+	handleTableSearch()--------GET---------/user/list?search={keyword}----------Searches users based on keyword
+
+Admin/Projects/Projects.vue
+	fetchProjects()-----------------GET------------------/project/list--------------------	Gets list of projects with pagination
+	currentPageHandler()-----------GET------------------	/project/list?page={page}----------Gets paginated projects for specific page
+	deleteProject()---------------	POST----------------/project/delete/{Id}-----------------------Deletes a specific project
+	saveProject()----------------POST------------------	/project/create--------------------Creates a new project
+	saveProject()----------------POST---------------------/project/update/{id}-----------------Updates an existing project
+	handleTableSearch()-----------GET---------------------/project/list?search={keyword}-------------Searches projects based on keyword
+	
+
+Admin/building/Building.vue
+	fetchProjects()-------------------GET---------------	/project/all-------------------Gets all projects
+	fetchBuldings()	-------------------GET-----------------/building-----------------------Gets list of buildings with pagination
+	currentPageHandler()--------------GET-----------------/building?page={page}--------------Gets paginated buildings for specific page
+	saveBuilding()------------------POST--------------------/building-----------------------Creates a new building
+	saveBuilding()------------------PUT---------------------/building/{id}-----------------Updates an existing building
+	handleTableSearch()-------------GET--------------------/building?search={keyword}-------------Searches buildings based on keyword
+
+Admin/DeviceConnected/Devices.vue
+	fetchDevices()----------------------GET-----------------------	/device/list--------------------Gets list of devices with pagination
+	currentPageHandler()----------------GET-------------------------/device/list?search={keyword}&page={page}----------Gets paginated and filtered devices
+	saveDevice() - Add---------------------POST---------------------/device/create---------------------------Creates a new device
+	saveDevice() - Edit--------------------POST---------------------/device/update/{id}--------------------------Updates an existing device
+	deleteDevice()-------------------------POST---------------------/device/delete/{Id}----------------------------Deletes a specific device
+	fetchProjects()-------------------------GET----------------------/project/all-----------------------------------Gets all projects
+	fetchDeviceTypes()----------------------GET-----------------------/device-type/list----------------------------Gets all device types
+	handleTableSearch()---------------------GET--------------------------	/device/list?search={keyword}---------------------Searches devices based on keyword
+	configure()---------------------------POST--------------------------/device/configure--------------------------------	Configures a device
+
+
+Admin/DeviceType/Devices.vue
+	fetchDevices()--------------------------------GET---------------------------/device-type---------------------Gets list of device types with pagination
+	currentPageHandler()--------------------------GET-----------------------------	/device-type?search={keyword}&page={page}----------------------Gets paginated and filtered device types
+	saveDevice()-----------------------------------POST--------------------------	/device-type/update/label----------------------------------------Updates device type label
+	handleTableSearch()--------------------------GET-------------------------------/device-type?search={keyword}--------------------------Searches device types based on keyword
+	
+Admin/RoomType/Type.vue
+	getTypes()------------------------GET----------------------/room/type-------------------------Gets list of all room types
+	storeType()--------------------------POST----------------/room/type/store-------------------Creates a new room type
+	updateType()----------------------PUT--------------------	/room/type/update-------------Updates an existing room type
+	
