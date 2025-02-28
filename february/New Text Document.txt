@@ -1,0 +1,7 @@
+Lotti Admin & Lotti Dashboard
+------------------------------ 
+1. set ssh key
+2. git clone
+3. cd your_project_name
+4. git fetch --all
+5. git checkout develop
